@@ -15,22 +15,66 @@ var DATA = {
 
 var StudentPanels = React.createClass({
     render: function() {
+        var students = this.props.DATA.items.map(function(u){
+            return (
+                <div>
+                    <div colSpan="4"> 
+                        <p> {u.name} </p>
+                        <p> {u.email} </p>
+                        <p> {u.gpa} </p>
+                    </div>
+                </div>
+            )
+        });
         return (
 				<div>
-					//Create each individual Student Panel
+				    <h4>Title</h4>
+                        <li>
+                            {students}
+                        </li>
 				</div>
         	);
     }
 });
+
 
 var StudentBox = React.createClass({
+//             getInitialState: function(){
+//             return {data: []}
+//         },
+//     loadPepsFromServer: function() {
+        
+//         $.ajax({
+//             url: this.props.url,
+//             dataType: 'json',
+//             cache:false,
+//             success:function(data){
+//                 console.log("inside success" + JSON.stringify(data[0]))
+//                 this.setState({data:data});
+//             }.bind(this),
+//             error: function(xhr,status, err){
+//                 console.log("broken url is " + this.props.url)
+//                 console.error(this.props.url, status,err.toString());
+//             }.bind(this)
+//         });
+//     },
+
+    
+// componentDidMount: function() {
+//     this.loadPepsFromServer();
+// },
+
     render: function() {
         return (
-				<div>
-					//Render Student List
-				</div>
-        	);
+                <div>
+                    <ul>
+                        <StudentPanels students={DATA}/>
+                    </ul>
+                </div>
+        );
     }
 });
 
-// React.render(<StudentBox/>, document.body)
+React.render(<StudentBox url="/api/index/"/>, document.body)
+
+
