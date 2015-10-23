@@ -15,23 +15,30 @@ var DATA = {
 
 var StudentPanels = React.createClass({
     render: function() {
-        var students = this.props.DATA.items.map(function(u){
+
+
+        var students = this.props.data.items.map(function(u){
             return (
-                <div>
-                    <div colSpan="4"> 
-                        <p> {u.name} </p>
-                        <p> {u.email} </p>
-                        <p> {u.gpa} </p>
-                    </div>
+                    <div className="col-md-4">
+                        <div className="panel panel-default">
+                            <div className="panel-heading">
+                            <h3 className="panel-title"></h3>
+                        </div>
+                    <div className="panel-body">
+                        <p>{u.Name}</p>
+                        <p>{u.Email}</p>
+                        <p>{u.gpa}</p>
+                  </div>
                 </div>
+            </div>
             )
         });
         return (
 				<div>
 				    <h4>Title</h4>
-                        <li>
+                        <div>
                             {students}
-                        </li>
+                        </div>
 				</div>
         	);
     }
@@ -39,36 +46,13 @@ var StudentPanels = React.createClass({
 
 
 var StudentBox = React.createClass({
-//             getInitialState: function(){
-//             return {data: []}
-//         },
-//     loadPepsFromServer: function() {
-        
-//         $.ajax({
-//             url: this.props.url,
-//             dataType: 'json',
-//             cache:false,
-//             success:function(data){
-//                 console.log("inside success" + JSON.stringify(data[0]))
-//                 this.setState({data:data});
-//             }.bind(this),
-//             error: function(xhr,status, err){
-//                 console.log("broken url is " + this.props.url)
-//                 console.error(this.props.url, status,err.toString());
-//             }.bind(this)
-//         });
-//     },
-
-    
-// componentDidMount: function() {
-//     this.loadPepsFromServer();
-// },
+//
 
     render: function() {
         return (
                 <div>
                     <ul>
-                        <StudentPanels students={DATA}/>
+                        <StudentPanels data={DATA}/>
                     </ul>
                 </div>
         );
